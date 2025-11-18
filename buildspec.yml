@@ -2,17 +2,19 @@ version: 0.2
 phases:
   install:
     commands:
-      # Instala Node.js y las dependencias (puedes usar npm o yarn)
       - echo Instalando dependencias...
       - npm install
   build:
     commands:
-      # Ejecuta el comando de compilación de Vite
       - echo Compilando el proyecto...
       - npm run build
+      
 artifacts:
   files:
-    # Indica que todos los archivos generados deben ser incluidos
-    - '**/*'
-  # DIRECTORIO CLAVE: La salida de la compilación de Vite es 'dist'
-  base-directory: dist
+    # 1. Incluir el archivo appspec.yml de la raíz del repositorio
+    - appspec.yml
+    # 2. Incluir la carpeta scripts
+    - scripts/**/*
+    # 3. Incluir el contenido de la carpeta dist (compilado)
+    - dist/**/* # CAMBIO CLAVE: Cambiar el base-directory a la raíz del proyecto para que pueda incluir todos los archivos.
+  base-directory: .
