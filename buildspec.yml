@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      # Instala Node.js y las dependencias (puedes usar npm o yarn)
+      - echo Instalando dependencias...
+      - npm install
+  build:
+    commands:
+      # Ejecuta el comando de compilación de Vite
+      - echo Compilando el proyecto...
+      - npm run build
+artifacts:
+  files:
+    # Indica que todos los archivos generados deben ser incluidos
+    - '**/*'
+  # DIRECTORIO CLAVE: La salida de la compilación de Vite es 'dist'
+  base-directory: dist
