@@ -1,0 +1,19 @@
+version: 0.0
+os: linux
+files:
+  # Origen: La carpeta 'dist' generada por CodeBuild
+  - source: /
+    # Destino: Directorio del servidor web en tu instancia EC2
+    destination: /var/www/html/
+    overwrite: true
+  - file_exists_behavior: OVERWRITE
+
+hooks:
+  ApplicationStop:
+    - location: scripts/stop_server.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/start_server.sh
+      timeout: 300
+      runas: root
