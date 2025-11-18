@@ -1,12 +1,11 @@
 version: 0.0
 os: linux
 files:
-  # Origen: La carpeta 'dist' generada por CodeBuild
   - source: /
-    # Destino: Directorio del servidor web en tu instancia EC2
     destination: /var/www/html/
+    # Estas tres líneas deben ir dentro del mismo bloque '-'
     overwrite: true
-  - file_exists_behavior: OVERWRITE
+    file_exists_behavior: OVERWRITE 
 
 hooks:
   ApplicationStop:
