@@ -1,18 +1,29 @@
 version: 0.0
 os: linux
 files:
-  - source: /
+  # CAMBIO CLAVE: 
+  # 1. Copia el contenido de la carpeta 'dist' (que está dentro del artefacto) 
+  # 2. Y lo pega directamente en el directorio raíz de la aplicación (/var/www/html/).
+  - source: dist/
     destination: /var/www/html/
-    # Estas tres líneas deben ir dentro del mismo bloque '-'
     overwrite: true
-    file_exists_behavior: OVERWRITE 
+    file_exists_behavior: OVERWRITE
+
+  # También necesitamos asegurarnos de que los scripts estén disponibles para los hooks.
+  # Los copiamos a la misma carpeta de destino o a una subcarpeta que uses para scripts.
+  - source: scripts/
+    destination: /var/www/html/scripts/
+    overwrite: true
+    file_exists_behavior: OVERWRITE
 
 hooks:
   ApplicationStop:
-    - location: scripts/stop_server.sh
+    # Ahora, el script de parada se encuentra en /var/www/html/scripts/
+    - location: scripts/stop_server.sh 
       timeout: 300
       runas: root
   ApplicationStart:
+    # El hook lo referencia correctamente desde la carpeta scripts/ del bundle de CodeDeploy
     - location: scripts/start_server.sh
       timeout: 300
       runas: root
