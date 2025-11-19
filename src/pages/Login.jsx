@@ -33,7 +33,7 @@ function Login() {
     <div className="auth-container">
       <div className="auth-card">
         <img src={logo} alt="CloudHW Logo" className="auth-logo" />
-        <h2>Iniciar Sesión</h2>
+        <h2>Iniciar Sesión dea dea</h2>
         <form onSubmit={handleSubmit}>
           <div className="input-group">
             <span>📧</span>
