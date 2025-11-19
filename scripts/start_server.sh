@@ -1,3 +1,3 @@
 #!/bin/bash
 echo "Iniciando el servidor Apache..."
-systemctl start apache2
+systemctl restart apache2
