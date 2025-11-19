@@ -1,0 +1,16 @@
+# .htaccess
+<IfModule mod_rewrite.c>
+  # Activa el motor de reescritura de URLs
+  RewriteEngine On
+  # Define la ruta base para las reescrituras
+  RewriteBase /
+  
+  # Si es una solicitud para un archivo existente, no hagas nada
+  RewriteCond %{REQUEST_FILENAME} !-f
+  # Si es una solicitud para un directorio existente, no hagas nada
+  RewriteCond %{REQUEST_FILENAME} !-d
+  
+  # Para cualquier otra cosa, redirige internamente a index.html
+  # La bandera [L] (Last) indica que esta es la última regla a procesar
+  RewriteRule ^(.*)$ /index.html [L]
+</IfModule>
