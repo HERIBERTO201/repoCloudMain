@@ -17,6 +17,6 @@ artifacts:
     - scripts/**/*
     # 3. Incluir el contenido de la carpeta compilada (dist)
     - dist/**/*
-  # El directorio base es la raíz del repositorio. 
-  # Esto asegura que todos los elementos anteriores se incluyan en el artefacto.
+    # NUEVO: Incluir el archivo .htaccess, asumiendo que está en la raíz del proyecto
+    - .htaccess 
   base-directory: .
