@@ -54,7 +54,7 @@ function Login() {
             />
           </div>
           <button type="submit" className="auth-btn">
-            Iniciar Sesión
+            DEA DEA DEA
           </button>
         </form>
         <p className="auth-link">
