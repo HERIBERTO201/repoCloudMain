@@ -8,13 +8,15 @@ phases:
     commands:
       - echo Compilando el proyecto...
       - npm run build
-      
+
 artifacts:
   files:
-    # 1. Incluir el archivo appspec.yml de la raíz del repositorio
+    # 1. Incluir el archivo appspec.yml
     - appspec.yml
-    # 2. Incluir la carpeta scripts
+    # 2. Incluir la carpeta scripts, necesaria para los hooks de CodeDeploy
     - scripts/**/*
-    # 3. Incluir el contenido de la carpeta dist (compilado)
-    - dist/**/* # CAMBIO CLAVE: Cambiar el base-directory a la raíz del proyecto para que pueda incluir todos los archivos.
+    # 3. Incluir el contenido de la carpeta compilada (dist)
+    - dist/**/*
+  # El directorio base es la raíz del repositorio. 
+  # Esto asegura que todos los elementos anteriores se incluyan en el artefacto.
   base-directory: .
