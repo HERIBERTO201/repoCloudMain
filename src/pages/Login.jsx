@@ -54,7 +54,7 @@ function Login() {
             />
           </div>
           <button type="submit" className="auth-btn">
-            DEA DEA DEA
+            DONNNA
           </button>
         </form>
         <p className="auth-link">
