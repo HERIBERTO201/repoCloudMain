@@ -8,15 +8,13 @@ phases:
     commands:
       - echo Compilando el proyecto...
       - npm run build
+      # AGREGA ESTA LÍNEA: Mueve el .htaccess a dist para que se despliegue junto con el build
+      - cp .htaccess dist/ 
 
 artifacts:
   files:
-    # 1. Incluir el archivo appspec.yml
     - appspec.yml
-    # 2. Incluir la carpeta scripts, necesaria para los hooks de CodeDeploy
     - scripts/**/*
-    # 3. Incluir el contenido de la carpeta compilada (dist)
     - dist/**/*
-    # NUEVO: Incluir el archivo .htaccess, asumiendo que está en la raíz del proyecto
-    - .htaccess 
+    # Ya no necesitas listar .htaccess aquí por separado si está dentro de dist
   base-directory: .
